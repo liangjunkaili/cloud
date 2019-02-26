@@ -29,10 +29,10 @@ public class ServiceHiApplication {
     @Value("${server.port}")
     String port;
 
-//    @RequestMapping("/hi")
-//    public String home(@RequestParam(value = "name",defaultValue = "liangJun") String name){
-//        return "hi "+name+", i am from port:"+port;
-//    }
+    @RequestMapping("/hi")
+    public String home(@RequestParam(value = "name",defaultValue = "liangJun") String name){
+        return "hi "+name+", i am from port:"+port;
+    }
     private static final Logger LOG = Logger.getLogger(ServiceHiApplication.class.getName());
 
 
@@ -44,7 +44,7 @@ public class ServiceHiApplication {
         return new RestTemplate();
     }
 
-    @RequestMapping("/hi")
+    @RequestMapping("/hello")
     public String callHome(){
         LOG.log(Level.INFO, "calling trace service-hi  ");
         return restTemplate.getForObject("http://localhost:8769/miya", String.class);
