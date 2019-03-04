@@ -8,3 +8,6 @@ lib里面的jar是服务链路追踪的jar包
 
 下面是springcloud的完整教程
 https://blog.csdn.net/forezp/article/details/70148833
+
+mycat的下载地址
+https://github.com/MyCATApache/Mycat-download
