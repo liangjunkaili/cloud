@@ -1,19 +1,24 @@
 package com.liangjun.servicelucy.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.liangjun.servicelucy.DO.User;
 import com.liangjun.servicelucy.dao.UserMapper;
+import com.liangjun.servicelucy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
 public class UserController {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("insertUser")
     public int insertUser(){
@@ -45,7 +50,9 @@ public class UserController {
     }
 
     @RequestMapping("findAll")
-    public List<User> findAll(){
-        return userMapper.findAll();
+    public PageInfo<User> findAll(@RequestParam(defaultValue = "1") int pageNo,@RequestParam(defaultValue = "10") int pageSize){
+        PageHelper.startPage(pageNo,pageSize);
+        PageInfo<User> pageInfo = new PageInfo<>(userService.findAll());
+        return pageInfo;
     }
 }

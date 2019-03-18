@@ -1,5 +1,6 @@
 package com.liangjun.servicelucy.dao;
 
+import com.github.pagehelper.Page;
 import com.liangjun.servicelucy.DO.User;
 import org.apache.ibatis.annotations.*;
 
@@ -28,5 +29,5 @@ public interface UserMapper {
             @Result(property = "phone",column = "phone")
     })*/
     @Select("select name,password,phone from t_user")
-    List<User> findAll();
+    Page<User> findAll();
 }
