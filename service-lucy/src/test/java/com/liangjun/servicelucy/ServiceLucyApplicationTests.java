@@ -17,7 +17,7 @@ public class ServiceLucyApplicationTests {
     private UserMapper userMapper;
     @Test
     public void contextLoads() {
-        userMapper.insert("liangjun","123456","15600806167");
+//        userMapper.insert("liangjun","123456","15600806167");
         User u = userMapper.findUserByPhone("15600806167");
         Assert.assertEquals("liangjun",u.getName());
     }

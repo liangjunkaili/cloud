@@ -4,30 +4,50 @@ import com.github.pagehelper.Page;
 import com.liangjun.servicelucy.DO.User;
 import org.apache.ibatis.annotations.*;
 
-import java.util.List;
+import java.math.BigDecimal;
 import java.util.Map;
 
 //@Mapper
 public interface UserMapper {
 
-    @Select("SELECT * FROM t_user WHERE phone = #{phone}")
+    @Results({
+            @Result(property = "id",column = "id"),
+            @Result(property = "name",column = "qqreader_name"),
+            @Result(property = "password",column = "pwd"),
+            @Result(property = "phone",column = "phone"),
+            @Result(property = "deleted",column = "is_deleted"),
+            @Result(property = "gmtCreate",column = "gmt_create"),
+            @Result(property = "gmtModified",column = "gmt_modified"),
+            @Result(property = "score",column = "score")
+    })
+    @Select("SELECT * FROM qqreader_user WHERE phone = #{phone}")
     User findUserByPhone(@Param("phone") String phone);
 
-    @Insert("INSERT INTO t_user(NAME,PASSWORD,phone) VALUES(#{name},#{password},#{phone})")
-    int insert(@Param("name") String name,@Param("password") String password,@Param("phone") String phone);
+    @Insert("INSERT INTO qqreader_user(qqreader_name,pwd,phone,is_deleted,gmt_modified,score) " +
+            "VALUES(#{name},#{password},#{phone},#{deleted},#{gmtModified},#{score})")
+    int insert(@Param("name") String name, @Param("password") String password, @Param("phone") String phone,
+               @Param("deleted") Boolean deleted, @Param("gmtModified") String gmtModified, @Param("score") BigDecimal score);
 
-    @Insert("INSERT INTO t_user(NAME,PASSWORD,phone) VALUES(#{name},#{password},#{phone})")
+    @Insert("INSERT INTO qqreader_user(qqreader_name,pwd,phone) VALUES(#{name},#{password},#{phone})")
     int insertByMap(Map<String,Object> map);
 
-    @Insert("INSERT INTO t_user(NAME,PASSWORD,phone) VALUES(#{name},#{password},#{phone})")
+    @Insert("INSERT INTO qqreader_user(qqreader_name,pwd,phone,is_deleted,gmt_modified,score)" +
+            " VALUES(#{name},#{password},#{phone},#{deleted},#{gmtModified},#{score})")
     int insertByUser(User user);
 
-    /*@Results(id = "1",value = {
+    @Results({
             @Result(property = "id",column = "id"),
-            @Result(property = "name",column = "name"),
-            @Result(property = "password",column = "password"),
-            @Result(property = "phone",column = "phone")
-    })*/
-    @Select("select name,password,phone from t_user")
+            @Result(property = "name",column = "qqreader_name"),
+            @Result(property = "password",column = "pwd"),
+            @Result(property = "phone",column = "phone"),
+            @Result(property = "deleted",column = "is_deleted"),
+            @Result(property = "gmtCreate",column = "gmt_create"),
+            @Result(property = "gmtModified",column = "gmt_modified"),
+            @Result(property = "score",column = "score")
+    })
+    @Select("select qqreader_name,pwd,phone,is_deleted,gmt_create,gmt_modified,score from qqreader_user")
     Page<User> findAll();
+
+    @Delete("DELETE FROM qqreader_user where phone = #{phone}")
+    int deleteUserByPhone(@Param("phone") String phone);
 }

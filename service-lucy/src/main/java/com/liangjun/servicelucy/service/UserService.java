@@ -5,4 +5,5 @@ import com.liangjun.servicelucy.DO.User;
 
 public interface UserService {
     Page<User> findAll();
+    int deleteUserByPhone(String phone);
 }
