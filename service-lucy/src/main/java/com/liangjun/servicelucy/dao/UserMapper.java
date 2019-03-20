@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 import java.util.Map;
 
-@Mapper
+//@Mapper
 public interface UserMapper {
 
     @Select("SELECT * FROM t_user WHERE phone = #{phone}")

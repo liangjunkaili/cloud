@@ -1,6 +1,7 @@
 package com.liangjun.servicelucy;
 
 import com.github.pagehelper.PageHelper;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,7 @@ import java.util.Properties;
 @SpringBootApplication
 @EnableEurekaClient
 @RestController
+@MapperScan("com.liangjun.servicelucy.dao")
 public class ServiceLucyApplication {
 
     //配置mybatis的分页插件pageHelper
