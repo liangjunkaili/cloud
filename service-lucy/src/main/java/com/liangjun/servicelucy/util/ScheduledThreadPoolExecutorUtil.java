@@ -1,12 +1,19 @@
 package com.liangjun.servicelucy.util;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.concurrent.*;
 
 public class ScheduledThreadPoolExecutorUtil {
     public static final ScheduledExecutorService schedule = Executors
             .newScheduledThreadPool(Runtime.getRuntime().availableProcessors());
     public static void main(String[] args) {
-        schedule(10000,10000,55000,new OneTask());
+        long initialDelay = LocalDateTime.of(2019, 4, 9, 23, 59, 59)
+                .toInstant(ZoneOffset.of("+8")).toEpochMilli()-System.currentTimeMillis();
+        long period = 5*1000;
+        long delay = LocalDateTime.of(2019, 4, 15, 10, 37, 0)
+                .toInstant(ZoneOffset.of("+8")).toEpochMilli()-System.currentTimeMillis();
+        schedule(initialDelay,period,delay,new OneTask());
     }
 
     /**
