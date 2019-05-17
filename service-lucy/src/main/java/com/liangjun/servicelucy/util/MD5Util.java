@@ -35,4 +35,14 @@ public class MD5Util {
         return hexString.toString();
     }
 
+    public static void main(String[] args) {
+        System.out.println(-1 << 29);
+        System.out.println(0 << 29);
+        System.out.println(1 << 29);
+        System.out.println(2 << 29);
+        System.out.println(3 << 29);
+        System.out.println(-1 << 29 | 0);
+        System.out.println(11233 & 536870911);
+        System.out.println(12 & ~(1 << 29));
+    }
 }
