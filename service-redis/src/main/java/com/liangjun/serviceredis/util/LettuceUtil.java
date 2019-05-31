@@ -14,6 +14,8 @@ public class LettuceUtil {
         RedisClient client = RedisClient.create(RedisURI.create("",6379));
         StatefulRedisConnection<String,String> connection = client.connect();
         RedisAsyncCommands asyncCommands = connection.async();
+        connection.sync();
+        connection.reactive();
         asyncCommands.auth("");
         RedisFuture future = asyncCommands.get("");
         future.get();

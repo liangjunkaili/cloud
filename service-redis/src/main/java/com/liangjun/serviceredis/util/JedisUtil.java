@@ -9,6 +9,10 @@ public class JedisUtil {
 
     public static void getJedis(){
         Jedis jedis = new Jedis("127.0.0.1",6379);
+        Pipeline pipeline = jedis.pipelined();
+        pipeline.get("");
+        pipeline.get("");
+        pipeline.exec();
         jedis.auth("password");
         jedis.get("");
         jedis.close();
