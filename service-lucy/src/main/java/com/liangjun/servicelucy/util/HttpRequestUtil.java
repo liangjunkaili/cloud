@@ -258,7 +258,7 @@ public class HttpRequestUtil {
         params.put("ywkey","yw5KwtSDZed4");
         params.put("loginType","1");
         String method = "GET";
-        String url = "http://pteventv3.reader.qq.com/activity/contentShare/myPrizes";
+        String url = "http://10.160.10.223:7070/systemsoa/services/ChargeService?wsdl";
         try {
             String res = send(url,method,null,params);
             System.out.println(res);
