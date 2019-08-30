@@ -2,6 +2,7 @@ package com.liangjun.servicenetty.future;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoop;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -27,5 +28,6 @@ public class FutureUtil {
         Channel channel;
         NioServerSocketChannel serverSocketChannel;
         NioSocketChannel socketChannel;
+        ByteBuf buf;
     }
 }
