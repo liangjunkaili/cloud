@@ -18,6 +18,8 @@
     <modules>
         <module>eureka-server</module>
         <module>service-hi</module>
+        <module>service-login</module>
+        <module>service-login</module>
     </modules>
 
     <properties>

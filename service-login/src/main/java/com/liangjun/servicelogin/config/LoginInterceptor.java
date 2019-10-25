@@ -1,4 +1,4 @@
-package com.liangjun.serviceredis.service;
+package com.liangjun.servicelogin.config;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -7,13 +7,17 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Service
-public class RedisInterceptor extends HandlerInterceptorAdapter {
+//@Service
+public class LoginInterceptor extends HandlerInterceptorAdapter {
     ThreadLocal<Long> startTime = new ThreadLocal<>();
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         startTime.set(System.currentTimeMillis());
-        System.out.println("preHandle ..."+request.getRequestURL());
+        final String token = request.getHeader("Authorization");
+        if (token !=null && token.startsWith(Constant.prefix)){
+
+        }
+        System.out.println("preHandle ...");
         return true;
     }
 

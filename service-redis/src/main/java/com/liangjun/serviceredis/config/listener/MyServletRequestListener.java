@@ -13,7 +13,8 @@ import javax.servlet.ServletRequestListener;
 public class MyServletRequestListener implements ServletRequestListener {
     @Override
     public void requestDestroyed(ServletRequestEvent sre) {
-        System.out.println("MyServletRequestListener requestDestroyed ...");
+        ServletRequest request = sre.getServletRequest();
+        System.out.println("MyServletRequestListener requestDestroyed ..."+request.getRemoteAddr());
     }
 
     @Override
