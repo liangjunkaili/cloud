@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> {
 
     private WebSocketServerHandshaker handshaker;
-    @Override
     protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
         if (msg instanceof FullHttpRequest){
 
@@ -66,5 +65,10 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
         if (response.getStatus().code()!=200){
 
         }
+    }
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
+
     }
 }
