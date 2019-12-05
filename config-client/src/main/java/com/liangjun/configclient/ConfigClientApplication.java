@@ -12,19 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableDiscoveryClient
-@RestController
 @RefreshScope
 public class ConfigClientApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ConfigClientApplication.class, args);
-    }
-
-    @Value("${from}")
-    String from;
-    @RequestMapping("hi")
-    public String hi(){
-        return from;
     }
 
 }

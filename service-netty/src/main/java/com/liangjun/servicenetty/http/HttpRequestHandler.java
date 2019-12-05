@@ -22,6 +22,7 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
         System.out.println(new String(bytes,"utf-8"));
         String uri = request.uri();
         String msg = "<html><head><title>test</title></head><body>你请求uri为：" + uri+"</body></html>";
+        buf.writeBytes(msg.getBytes());
         FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK,
                 Unpooled.copiedBuffer(buf));
         response.headers().set(HttpHeaderNames.CONTENT_TYPE,"text/html; charset=UTF-8");

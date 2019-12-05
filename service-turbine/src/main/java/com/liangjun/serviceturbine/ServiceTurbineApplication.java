@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableDiscoveryClient
-@RestController
 @EnableHystrix
 @EnableHystrixDashboard
 @EnableCircuitBreaker
